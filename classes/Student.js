@@ -1,8 +1,10 @@
-import { Passenger } from "./Passenger.js"
+import { v4 } from "uuid"
 
-export class StudentPassenger extends Passenger{
-    constructor(id, name, amount, school) {
-        super(id, name, amount)
+export class StudentPassenger {
+    constructor(name, amount, school) {
+        this.id = v4()
+        this.name = name
+        this.amount = amount
         this.school = school
     }
 }

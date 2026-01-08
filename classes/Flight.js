@@ -65,18 +65,20 @@ export class Flight {
             for (let ticket = 0; ticket < this.ticketsList.length; ticket++) {
                 if (ticket instanceof RegularTicket && ticket.owner === undefined) {
                     ticket.name = passenger.name
-                } else {
+                    console.log("ticket bought");
+                } else if (ticket.owner !== undefined){
                     console.log("all regular tickets are sold out");
-                    
+                    return
                 }
             }
         } else if (ticketType === 'vip' && passenger.amount >= price) {
             for (let ticket = 0; ticket < this.ticketsList.length; ticket++) {
                 if (ticket instanceof VipTicket && ticket.owner === undefined) {
                     ticket.name = passenger.name
-                } else {
+                    console.log("ticket bought");
+                } else if (ticket.owner !== undefined){
                     console.log("all vip tickets are sold out");
-                    
+                    return
                 }
             }
         } else {
