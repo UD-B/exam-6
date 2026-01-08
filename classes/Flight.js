@@ -39,7 +39,7 @@ export class Flight {
                     price = regularTicket.price * 0.8
                 } else {
                     console.log("no such ticket type");
-                    return
+                    
                 }
             } else {
                 if (ticketType === 'vip') {
@@ -48,18 +48,17 @@ export class Flight {
                     price = regularTicket.price
                 } else {
                     console.log("no such ticket type");
-                    return
+                    
                 }
             }
-        }
-        if (passenger instanceof StudentPassenger) {
+        } else if (passenger instanceof StudentPassenger) {
             if (ticketType === 'vip') {
                 price = vipTicket.price
             } else if (ticketType === 'regular') {
                 price = regularTicket.price * 0.9
             } else {
                 console.log("no such ticket type");
-                return
+                
             }
         }
         if (ticketType === 'regular' && passenger.amount >= price) {
@@ -68,25 +67,21 @@ export class Flight {
                     ticket.name = passenger.name
                 } else {
                     console.log("all regular tickets are sold out");
-                    return
+                    
                 }
             }
-        } else {
-            console.log("not enough money");
-            return
-        }
-        if (ticketType === 'vip' && passenger.amount >= price) {
+        } else if (ticketType === 'vip' && passenger.amount >= price) {
             for (let ticket = 0; ticket < this.ticketsList.length; ticket++) {
                 if (ticket instanceof VipTicket && ticket.owner === undefined) {
                     ticket.name = passenger.name
                 } else {
                     console.log("all vip tickets are sold out");
-                    return
+                    
                 }
             }
         } else {
             console.log("not enough money");
-            return
+            
         }
     }
 }
